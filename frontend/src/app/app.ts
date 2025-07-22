@@ -1,30 +1,16 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { JsonService } from '././services/json';
-import { CommonModule, JsonPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Color, Food } from './types';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { FlavorService } from './services/flavor';
+import { ColorEvent } from 'ngx-color';
+import { ColorPicker } from './components/color-picker/color-picker';
+import { Ingredients } from './components/ingredients/ingredients';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, JsonPipe],
+  imports: [CommonModule, ColorPicker, Ingredients],
   templateUrl: './app.html',
 })
-export class App implements OnInit {
-  flavorService = inject(JsonService);
-
-  colorVectors: Color | null = null;
-  colors: [string, number[]][] = [];
-  foodVectors: Food | null = null;
-
-  ngOnInit(): void {
-    this.flavorService.getColorVectors().subscribe((data) => {
-      this.colorVectors = data;
-      this.colors = Object.entries(this.colorVectors);
-      console.log('Color Vectors: ' + this.colorVectors);
-    });
-
-    this.flavorService.getFoodVectors().subscribe((data) => {
-      this.foodVectors = data;
-      console.log('Color Vectors: ' + this.colorVectors);
-    });
-  }
-}
+export class App {}

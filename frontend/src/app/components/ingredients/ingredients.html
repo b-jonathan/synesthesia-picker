@@ -1,0 +1,10 @@
+@if (matchedIngredients$ | async) {
+<div class="flex gap-2 mx-auto w-fit">
+  <p>Matched Ingredients:</p>
+  @for (ingredient of matchedIngredients$ | async; track $index) {
+  <div class="ingredient">
+    {{ ingredient }}
+  </div>
+  }
+</div>
+}
