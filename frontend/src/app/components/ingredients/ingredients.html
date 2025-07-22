@@ -1,12 +1,20 @@
-@if (matchedIngredients$ | async) {
-<div class="flex gap-2 mx-auto w-fit">
-  <p>Matched Ingredients:</p>
-  @for (ingredient of matchedIngredients$ | async; track $index) {
-  <div class="ingredient">
-    {{ ingredient }}
+@if (matchedIngredients$ | async; as ingredients) { @if (ingredients &&
+ingredients.length > 0) {
+<div class="flex flex-col w-fit mx-auto gap-5">
+  <div class="flex gap-2">
+    <p>Matched Ingredients:</p>
+    @for (ingredient of ingredients; track $index) {
+    <div class="ingredient">
+      {{ ingredient }}
+    </div>
+    }
   </div>
-  }
-</div>
-}
 
-<button (click)="onGetRecipes()">Get Recipes</button>
+  <button
+    class="bg-blue-700 py-2 rounded-md cursor-pointer hover:bg-blue-800"
+    (click)="onGetRecipes()"
+  >
+    Get Recipes
+  </button>
+</div>
+} }

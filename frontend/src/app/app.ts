@@ -7,10 +7,11 @@ import { FlavorService } from './services/flavor';
 import { ColorEvent } from 'ngx-color';
 import { ColorPicker } from './components/color-picker/color-picker';
 import { Ingredients } from './components/ingredients/ingredients';
+import { RecipeList } from './components/recipe-list/recipe-list';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, ColorPicker, Ingredients],
+  imports: [CommonModule, ColorPicker, Ingredients, RecipeList],
   templateUrl: './app.html',
 })
 export class App {}

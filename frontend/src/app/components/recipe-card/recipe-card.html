@@ -1,0 +1,21 @@
+<div class="bg-gray-800 rounded-md flex items-stretch">
+  <img
+    [src]="recipe().image"
+    alt="{{ recipe().title }}"
+    class="h-48 object-cover rounded-md"
+  />
+  <div class="flex flex-col justify-between px-5 py-3 flex-1">
+    <div class="">
+      <h3 class="font-bold text-lg">{{ recipe().title }}</h3>
+      <div class="flex gap-2">
+        <p>Uses:</p>
+        <div class="flex gap-2">
+          @for (ingredient of recipe().usedIngredients; track ingredient.id) {
+          <span> {{ ingredient.name }}@if (!$last) {,} </span>
+          }
+        </div>
+      </div>
+    </div>
+    <p>And {{ recipe().missedIngredientCount }} other ingredients</p>
+  </div>
+</div>

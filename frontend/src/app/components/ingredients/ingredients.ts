@@ -1,6 +1,6 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AppStateService } from '../../services/state';
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { RecipeService } from '../../services/recipe';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -8,7 +8,6 @@ import { Subject, takeUntil } from 'rxjs';
   selector: 'app-ingredients',
   imports: [AsyncPipe],
   templateUrl: './ingredients.html',
-  styleUrl: './ingredients.css',
 })
 export class Ingredients {
   private destroy$ = new Subject<void>();

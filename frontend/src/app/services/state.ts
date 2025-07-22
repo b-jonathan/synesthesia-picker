@@ -24,7 +24,6 @@ export interface Recipe {
   missedIngredientCount: number;
   missedIngredients: Ingredient[];
   title: string;
-  ingredients: Ingredient[];
   usedIngredientCount: number;
   usedIngredients: Ingredient[];
   unusedIngredients: Ingredient[];

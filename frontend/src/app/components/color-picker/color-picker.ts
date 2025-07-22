@@ -11,7 +11,6 @@ import { CommonModule } from '@angular/common';
   selector: 'app-color-picker',
   imports: [ColorPickerModule, FormsModule, CommonModule],
   templateUrl: './color-picker.html',
-  styleUrl: './color-picker.css',
 })
 export class ColorPicker implements OnInit {
   private destroy$ = new Subject<void>();
