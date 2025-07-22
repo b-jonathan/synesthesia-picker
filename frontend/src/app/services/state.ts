@@ -34,7 +34,6 @@ export interface AppState {
   selectedColor: string | null;
   matchedIngredients: string[];
   recipes: Recipe[];
-  error: string | null;
 }
 
 @Injectable({
@@ -45,7 +44,6 @@ export class AppStateService {
     selectedColor: null,
     matchedIngredients: [],
     recipes: [],
-    error: null,
   };
 
   private stateSubject = new BehaviorSubject<AppState>(this.initialState);
@@ -69,11 +67,6 @@ export class AppStateService {
     distinctUntilChanged()
   );
 
-  public error$ = this.state$.pipe(
-    map((state) => state.error),
-    distinctUntilChanged()
-  );
-
   // State update methods
   setSelectedColor(color: string): void {
     this.updateState({ selectedColor: color });
@@ -84,15 +77,7 @@ export class AppStateService {
   }
 
   setRecipes(recipes: Recipe[]): void {
-    this.updateState({ recipes, error: null });
-  }
-
-  setError(error: string): void {
-    this.updateState({ error });
-  }
-
-  clearError(): void {
-    this.updateState({ error: null });
+    this.updateState({ recipes });
   }
 
   reset(): void {

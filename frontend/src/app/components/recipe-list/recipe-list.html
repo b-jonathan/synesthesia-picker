@@ -1,0 +1,7 @@
+@if (recipes$ | async) {
+<ul>
+  @for (recipe of recipes$ | async; track $index) {
+  <li>{{ recipe.title }}</li>
+  }
+</ul>
+}

@@ -22,10 +22,8 @@ export class ColorPicker implements OnInit {
 
   selectedColor$ = this.state.selectedColor$;
   matchedIngredients$ = this.state.matchedIngredients$;
-  error$ = this.state.error$;
 
   currentColor = '#ffffff';
-  numberOfIngredients = 3; // Configurable number of ingredients to match
 
   ngOnInit() {
     this.selectedColor$
@@ -34,10 +32,7 @@ export class ColorPicker implements OnInit {
         switchMap((color) => {
           if (color) {
             // Get top N closest ingredients
-            return this.flavorService.queryFoodByColor(
-              color,
-              this.numberOfIngredients
-            );
+            return this.flavorService.queryFoodByColor(color, 3);
           }
           return [];
         })
