@@ -1,1 +1,24 @@
-<p>upload works!</p>
+<div class="mx-auto w-fit flex flex-col gap-10 items-center">
+  <input
+    type="file"
+    (change)="onFileSelected($event)"
+    accept="image/png, image/jpeg, image/jpg"
+  />
+
+  @if (prominentColors(); as colors) { @if (colors && colors.length > 0) {
+  <div class="flex gap-2 items-center">
+    <p>Prominent colors:</p>
+    @for (color of colors; track $index) {
+    <app-color-block [color]="color" />
+    }
+  </div>
+  <div class="flex gap-2">
+    <p>Matched ingredients:</p>
+    @for (ingredient of matchedIngredients(); track $index) {
+    {{ ingredient }}
+    }
+  </div>
+  } }
+
+  <app-recipe-list [recipes]="recipes()" />
+</div>

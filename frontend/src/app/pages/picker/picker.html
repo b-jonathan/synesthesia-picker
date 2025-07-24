@@ -1,3 +1,5 @@
-<app-color-picker />
-<app-ingredients />
-<app-recipe-list class="mt-10" />
+<div class="flex flex-col gap-5">
+  <app-color-picker />
+  <app-ingredients />
+  <app-recipe-list class="mt-10" [recipes]="(recipes$ | async)!" />
+</div>
