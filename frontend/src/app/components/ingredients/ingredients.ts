@@ -1,43 +1,19 @@
-import { Component, inject } from '@angular/core';
-import { AppStateService } from '../../services/state';
-import { AsyncPipe } from '@angular/common';
-import { RecipeService } from '../../services/recipe';
-import { Subject, takeUntil } from 'rxjs';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-ingredients',
-  imports: [AsyncPipe],
+  imports: [],
   templateUrl: './ingredients.html',
 })
 export class Ingredients {
-  private destroy$ = new Subject<void>();
+  // Inputs
+  matchedIngredients = input<string[]>([]);
+  isLoading = input<boolean>(false);
 
-  state = inject(AppStateService);
-  recipeService = inject(RecipeService);
+  // Outputs
+  getRecipes = output<void>();
 
-  matchedIngredients$ = this.state.matchedIngredients$;
-  recipes$ = this.state.recipes$;
-
-  onGetRecipes() {
-    this.state.setRecipes([]);
-
-    const currentIngredients = this.state.getCurrentState().matchedIngredients;
-
-    if (currentIngredients && currentIngredients.length > 0) {
-      this.recipeService
-        .fetchRecipes(currentIngredients)
-        .pipe(takeUntil(this.destroy$))
-        .subscribe({
-          next: (recipes) => {
-            this.state.setRecipes(recipes);
-            console.log(recipes);
-          },
-          error: (error) => {
-            console.log('Failed to fetch recipes: ' + error.message);
-          },
-        });
-    } else {
-      console.log('No ingredients matched.');
-    }
+  onGetRecipes(): void {
+    this.getRecipes.emit();
   }
 }

@@ -1,15 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { AppStateService, Recipe } from './state';
 import { map, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { Recipe } from '../types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipeService {
   http = inject(HttpClient);
-  state = inject(AppStateService);
 
   private API_URL = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${environment.spoonacularApiKey}&ingredients=`;
 

@@ -1,6 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Recipe } from '../../services/state';
-import { NgIf } from '@angular/common';
+import { Recipe } from '../../types';
 
 @Component({
   selector: 'app-recipe-card',
